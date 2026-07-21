@@ -15,10 +15,6 @@ $ podman run \
     --character-set-server=utf8mb4 \
     --collation-server=utf8mb4_bin \
     --mysql-native-password=ON
-
-
-    --default-authentication-plugin=mysql_native_password \
-    --skip-character-set-client-handshake
 ```
 
 ```shell
@@ -37,7 +33,12 @@ Empty set (0.00 sec)
 
 
 
-# run the application from the command line with ... Maven
+# run the application from the command line
+
+using one of the following:
+
+option 1:
+with Maven
 
 ```shell
 $ ./mvnw spring-boot:run
@@ -59,7 +60,10 @@ mysql> show tables;
 
 
 
-# build a single executable JAR file that contains all the necessary dependencies, classes, and resources and run that
+option 2:
+build a single executable JAR file that contains all the necessary dependencies, classes, and resources
+and
+run that
 
 build the JAR file with
 ```shell
