@@ -1,15 +1,22 @@
+# configure
+
+```shell
+$ cp \
+    .env.template \
+    .env
+
+# Edit the newly-created file according to the instructions therein.
+```
+
+
+
 # create an empty database:
 
 ```shell
 $ podman run \
     --name container-tutorial-60-mysql \
     --mount source=volume-tutorial-60-mysql,destination=/var/lib/mysql \
-    --env MYSQL_HOST=localhost \
-    --env MYSQL_PORT=3306 \
-    --env MYSQL_RANDOM_ROOT_PASSWORD=yes \
-    --env MYSQL_USER=tutorial-60-user \
-    --env MYSQL_PASSWORD=tutorial-60-password \
-    --env MYSQL_DATABASE=tutorial-60-database \
+    --env-file .env \
     --publish 3306:3306 \
     mysql:8.4.10 \
     --character-set-server=utf8mb4 \
@@ -26,6 +33,7 @@ bash-5.1# mysql \
     -u tutorial-60-user \
     -p \
     tutorial-60-database
+Enter password: <enter-the-requested-password>
 
 mysql> show tables;
 Empty set (0.00 sec)
@@ -41,7 +49,18 @@ option 1:
 with Maven
 
 ```shell
-$ ./mvnw spring-boot:run
+# Since the following line is wrapped in parentheses,
+# it runs not in your current shell, but in a child process - in a sub-shell.
+# After that sub-shell exits, no environment variables will remain set in the parent shell process.
+#
+# The first statement = Turn on the shell's "allexport" (auto-export) option.
+$ (
+    set -a ;
+
+    source ./.env ;
+
+    ./mvnw spring-boot:run ;
+)
 
 # ...
 
@@ -72,8 +91,14 @@ $ ./mvnw clean package
 
 run the JAR file, as follows:
 ```shell
-$ java \
-    -jar target/tutorial-about-java-60-0.0.1-SNAPSHOT.jar
+$ (
+    set -a ;
+
+    source ./.env ;
+
+    java \
+        -jar target/tutorial-about-java-60-0.0.1-SNAPSHOT.jar ;
+)
 ```
 
 
@@ -107,6 +132,21 @@ $ curl \
 
 
 # cleanup
+
+in the terminal where the application is running:
+
+- press `Ctrl + C`
+
+- verify that no environment variables have leaked into the environment:
+
+  ```shell
+  $ env | grep SPRING_
+  <no output>
+  $ env | grep MYSQL_
+  <no output>
+  ```
+
+
 
 ```shell
 $ podman container rm -f container-tutorial-60-mysql \
