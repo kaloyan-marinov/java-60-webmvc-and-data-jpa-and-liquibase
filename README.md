@@ -17,7 +17,7 @@ $ podman run \
     --name container-tutorial-60-mysql \
     --mount source=volume-tutorial-60-mysql,destination=/var/lib/mysql \
     --env-file .env \
-    --publish 3306:3306 \
+    --publish $(sed -n 's/^MYSQL_PORT=//p' .env):$(sed -n 's/^MYSQL_PORT=//p' .env) \
     mysql:8.4.10 \
     --character-set-server=utf8mb4 \
     --collation-server=utf8mb4_bin \
