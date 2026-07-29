@@ -15,7 +15,7 @@ Hibernate automatically translates the entity into a table.
 @Entity
 public class User {
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private @Nullable Integer id;
 
     private String name;
