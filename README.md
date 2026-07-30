@@ -41,6 +41,20 @@ Empty set (0.00 sec)
 
 
 
+# initialize a migration repository
+
+```shell
+$ (
+    set -a;
+    source .env;
+    ./mvnw -q clean compile liquibase:diff;
+)
+
+# generates `src/main/resources/db/changelog/db.changelog-master.mysql.sql`
+```
+
+
+
 # run the application from the command line
 
 using one of the following:
