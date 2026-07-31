@@ -80,15 +80,26 @@ $ (
 
 # Running `show tables;` in the `mysql` shell now will return:
 ```
-```
+
+```sql
 mysql> show tables;
 +--------------------------------+
 | Tables_in_tutorial-60-database |
 +--------------------------------+
+| DATABASECHANGELOG              |
+| DATABASECHANGELOGLOCK          |
+| User                           |
 | user                           |
-| user_seq                       |
 +--------------------------------+
-2 rows in set (0.00 sec)
+4 rows in set (0.00 sec)
+
+mysql> select ID, FILENAME from DATABASECHANGELOG;
++-----------------+--------------------------------------------+
+| ID              | FILENAME                                   |
++-----------------+--------------------------------------------+
+| 1785441026135-1 | db/changelog/db.changelog-master.mysql.sql |
++-----------------+--------------------------------------------+
+1 row in set (0.01 sec)
 ```
 
 
