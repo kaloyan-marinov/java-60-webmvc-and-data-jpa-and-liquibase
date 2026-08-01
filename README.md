@@ -47,7 +47,7 @@ Empty set (0.00 sec)
 $ (
     set -a;
     source .env;
-    ./mvnw -q clean compile liquibase:diff;
+    ./mvnw -q clean compile liquibase:diff -Dliquibase.changeLogFile=src/main/resources/db/changelog/db.changelog-master.mysql.sql -Dliquibase.diffChangeLogFile=src/main/resources/db/changelog/db.changelog-master.mysql.sql;
 )
 
 # generates `src/main/resources/db/changelog/db.changelog-master.mysql.sql`
@@ -58,7 +58,7 @@ apply the initial set of migrations
 $ (
     set -a;
     source .env;
-    ./mvnw -q clean compile liquibase:update;
+    ./mvnw -q clean compile liquibase:update -Dliquibase.changeLogFile=db/changelog/db.changelog-master.mysql.sql;
 )
 
 UPDATE SUMMARY
@@ -76,7 +76,7 @@ mysql> show tables;
 +--------------------------------+
 | DATABASECHANGELOG              |
 | DATABASECHANGELOGLOCK          |
-| User                           |
+| user                           |
 +--------------------------------+
 3 rows in set (0.00 sec)
 
@@ -84,7 +84,7 @@ mysql> select ID, FILENAME, DATEEXECUTED from DATABASECHANGELOG;
 +-----------------+--------------------------------------------+---------------------+
 | ID              | FILENAME                                   | DATEEXECUTED        |
 +-----------------+--------------------------------------------+---------------------+
-| 1785441026135-1 | db/changelog/db.changelog-master.mysql.sql | 2026-07-30 20:09:53 |
+| 1785443916372-1 | db/changelog/db.changelog-master.mysql.sql | 2026-07-30 20:38:54 |
 +-----------------+--------------------------------------------+---------------------+
 1 row in set (0.00 sec)
 ```
@@ -124,18 +124,17 @@ mysql> show tables;
 +--------------------------------+
 | DATABASECHANGELOG              |
 | DATABASECHANGELOGLOCK          |
-| User                           |
 | user                           |
 +--------------------------------+
-4 rows in set (0.00 sec)
+3 rows in set (0.00 sec)
 
 mysql> select ID, FILENAME, DATEEXECUTED from DATABASECHANGELOG;
 +-----------------+--------------------------------------------+---------------------+
 | ID              | FILENAME                                   | DATEEXECUTED        |
 +-----------------+--------------------------------------------+---------------------+
-| 1785441026135-1 | db/changelog/db.changelog-master.mysql.sql | 2026-07-30 21:30:52 |
+| 1785443916372-1 | db/changelog/db.changelog-master.mysql.sql | 2026-07-30 21:30:52 |
 +-----------------+--------------------------------------------+---------------------+
-1 row in set (0.01 sec)
+1 row in set (0.00 sec)
 ```
 
 

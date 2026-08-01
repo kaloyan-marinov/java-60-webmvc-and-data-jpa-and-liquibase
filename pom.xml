@@ -113,7 +113,7 @@
 					<!--
 					The following specifies the changelog, which gets applied by `liquibase:update` and Spring Boot on startup.
 					-->
-					<changeLogFile>${liquibase.changelog}</changeLogFile>
+					<!-- <changeLogFile>${liquibase.changelog}</changeLogFile> -->
 
 					<!--
 					The following specifies the target: the real database.
@@ -128,13 +128,13 @@
 					-->
 					<referenceUrl>hibernate:spring:com.github.tutorial_about_java_60?dialect=org.hibernate.dialect.MySQLDialect
 						&amp;hibernate.physical_naming_strategy=org.hibernate.boot.model.naming.CamelCaseToUnderscoresNamingStrategy
-						&amp;hibernate.implicit_naming_strategy=org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy
+						&amp;hibernate.implicit_naming_strategy=org.springframework.boot.hibernate.SpringImplicitNamingStrategy
 					</referenceUrl>
 
 					<!--
 					`liquibase:diff` appends the entities-vs-DB delta to the same changelog.
 					-->
-					<diffChangeLogFile>${liquibase.changelog}</diffChangeLogFile>
+					<!-- <diffChangeLogFile>${liquibase.changelog}</diffChangeLogFile> -->
 				</configuration>
 				<dependencies>	
 					<!--
@@ -167,6 +167,11 @@
 						<groupId>com.mysql</groupId>
 						<artifactId>mysql-connector-j</artifactId>
 						<version>${mysql.version}</version>
+					</dependency>
+					<dependency>
+						<groupId>org.springframework.boot</groupId>
+						<artifactId>spring-boot-hibernate</artifactId>
+						<version>${project.parent.version}</version>
 					</dependency>
 				</dependencies>
 			</plugin>
