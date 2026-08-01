@@ -45,7 +45,7 @@
 
 		The "double" suffix tells the diff serializer which SQL dialect to emit.
 		-->
-		<liquibase.changelog>src/main/resources/db/changelog/db.changelog-master.mysql.sql</liquibase.changelog>
+		<liquibase.changelog>db/changelog/db.changelog-master.mysql.sql</liquibase.changelog>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -126,7 +126,10 @@
 					<!--
 					The following specifies the source: the JPA entities.
 					-->
-					<referenceUrl>hibernate:spring:com.github.tutorial_about_java_60?dialect=org.hibernate.dialect.MySQLDialect</referenceUrl>
+					<referenceUrl>hibernate:spring:com.github.tutorial_about_java_60?dialect=org.hibernate.dialect.MySQLDialect
+						&amp;hibernate.physical_naming_strategy=org.hibernate.boot.model.naming.CamelCaseToUnderscoresNamingStrategy
+						&amp;hibernate.implicit_naming_strategy=org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy
+					</referenceUrl>
 
 					<!--
 					`liquibase:diff` appends the entities-vs-DB delta to the same changelog.
