@@ -22,6 +22,8 @@ public class User {
 
     private String email;
 
+    private String zipCode;
+
     public Integer getId() {
         return id;
     }
@@ -44,5 +46,13 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getZipCode() {
+        return zipCode;
+    }
+
+    public void setZipCode(String zipCode) {
+        this.zipCode = zipCode;
     }
 }
