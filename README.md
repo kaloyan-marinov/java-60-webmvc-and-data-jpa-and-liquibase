@@ -10,6 +10,27 @@ $ cp \
 
 
 
+# run the test suite
+
+```shell
+$ mvn test
+# ...
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.630 s -- in com.github.tutorial_about_java_60.TutorialAboutJava60ApplicationTests
+[INFO]
+[INFO] Results:
+[INFO]
+[INFO] Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
+[INFO]
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  3.467 s
+[INFO] Finished at: # ...
+[INFO] ------------------------------------------------------------------------
+```
+
+
+
 # create an empty database:
 
 ```shell
@@ -83,7 +104,7 @@ mysql> show tables;
 +--------------------------------+
 | DATABASECHANGELOG              |
 | DATABASECHANGELOGLOCK          |
-| user                           |
+| users                          |
 +--------------------------------+
 3 rows in set (0.00 sec)
 
@@ -131,7 +152,7 @@ mysql> show tables;
 +--------------------------------+
 | DATABASECHANGELOG              |
 | DATABASECHANGELOGLOCK          |
-| user                           |
+| users                          |
 +--------------------------------+
 3 rows in set (0.00 sec)
 
