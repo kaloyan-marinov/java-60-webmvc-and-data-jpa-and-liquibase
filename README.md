@@ -45,9 +45,13 @@ Empty set (0.00 sec)
 
 ```shell
 $ (
-    set -a;
-    source .env;
-    ./mvnw -q clean compile liquibase:diff -Dliquibase.changeLogFile=src/main/resources/db/changelog/db.changelog-master.mysql.sql -Dliquibase.diffChangeLogFile=src/main/resources/db/changelog/db.changelog-master.mysql.sql;
+    set -a ;
+
+    source .env ;
+
+    ./mvnw -q clean compile liquibase:diff \
+        -Dliquibase.changeLogFile=src/main/resources/db/changelog/db.changelog-master.mysql.sql \
+        -Dliquibase.diffChangeLogFile=src/main/resources/db/changelog/db.changelog-master.mysql.sql ;
 )
 
 # generates `src/main/resources/db/changelog/db.changelog-master.mysql.sql`
@@ -56,9 +60,12 @@ $ (
 apply the initial set of migrations
 ```shell
 $ (
-    set -a;
-    source .env;
-    ./mvnw -q clean compile liquibase:update -Dliquibase.changeLogFile=db/changelog/db.changelog-master.mysql.sql;
+    set -a ;
+
+    source .env ;
+
+    ./mvnw -q clean compile liquibase:update \
+        -Dliquibase.changeLogFile=db/changelog/db.changelog-master.mysql.sql ;
 )
 
 UPDATE SUMMARY
