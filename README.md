@@ -137,12 +137,8 @@ mysql> show tables;
 3 rows in set (0.00 sec)
 
 mysql> select ID, FILENAME, DATEEXECUTED from DATABASECHANGELOG;
-+-----------------+--------------------------------------------+---------------------+
-| ID              | FILENAME                                   | DATEEXECUTED        |
-+-----------------+--------------------------------------------+---------------------+
-| 1785443916372-1 | db/changelog/db.changelog-master.mysql.sql | 2026-07-30 21:30:52 |
-+-----------------+--------------------------------------------+---------------------+
-1 row in set (0.00 sec)
+-- The output should be identical to
+-- the output of the above-noted preceding run of this same statement.
 ```
 
 
