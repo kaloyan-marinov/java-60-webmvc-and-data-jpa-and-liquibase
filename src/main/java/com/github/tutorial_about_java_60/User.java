@@ -6,6 +6,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 /*
 [This annotation] tells Hibernate to make a table out of this class.
@@ -13,6 +14,7 @@ import jakarta.persistence.Id;
 Hibernate automatically translates the entity into a table.
 */
 @Entity
+@Table(name = "users")
 public class User {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
