@@ -36,11 +36,15 @@ public class MainController {
         @RequestParam
         String name,
         @RequestParam
-        String email
+        String email,
+        @RequestParam
+        String zipCode
     ) {
         User n = new User();
         n.setName(name);
         n.setEmail(email);
+        System.out.println("zipCode: %s".formatted(zipCode));
+        n.setZipCode(zipCode);
         userRepository.save(n);
         return "Saved";
     }
