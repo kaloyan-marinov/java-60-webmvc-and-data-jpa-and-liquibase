@@ -70,10 +70,10 @@ $ (
 
 UPDATE SUMMARY
 Run:                          1
-Previously run:               1
+Previously run:               0
 Filtered out:                 0
 -------------------------------
-Total change sets:            2
+Total change sets:            1
 ```
 
 ```sql
@@ -92,9 +92,8 @@ mysql> select ID, FILENAME, DATEEXECUTED from DATABASECHANGELOG;
 | ID              | FILENAME                                   | DATEEXECUTED        |
 +-----------------+--------------------------------------------+---------------------+
 | 1785443916372-1 | db/changelog/db.changelog-master.mysql.sql | 2026-07-30 20:38:54 |
-| 1785444468459-1 | db/changelog/db.changelog-master.mysql.sql | 2026-07-30 20:48:50 |
 +-----------------+--------------------------------------------+---------------------+
-2 rows in set (0.00 sec)
+1 row in set (0.00 sec)
 ```
 
 
@@ -177,8 +176,7 @@ $ curl \
 $ curl \
     http://localhost:8080/demo/add \
     -d name=John \
-    -d email=someemail@someemailprovider.com \
-    -d zipCode=1234
+    -d email=someemail@someemailprovider.com
 Saved
 
 $ curl \
@@ -189,8 +187,7 @@ $ curl \
    {
       "email" : "someemail@someemailprovider.com",
       "id" : 1,
-      "name" : "John",
-      "zipCode" : "1234"
+      "name" : "John"
    }
 ]
 ```
